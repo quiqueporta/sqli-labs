@@ -1,6 +1,6 @@
 README
 ================
-SQLI-LABS is a platform to learn SQLI 
+SQLI-LABS is a platform to learn SQLI
 Following labs are covered for GET and POST scenarios:
 
 1. Error Based Injections (Union Select)
@@ -33,21 +33,14 @@ Following labs are covered for GET and POST scenarios:
 ========================================================================================
 Install Instructions:
 
-1. Unzip the contents inside the apache folder, for example under /var/www
-2. This will create a folder sql-labs under it. else you can use git command from within /var/www folder.
-/var/www folder and then use following command> git clone https://github.com/Audi-1/sqli-labs.git sqli-labs
-3. Open the file "db-creds.inc" which is under sql-connections folder inside the sql-labs folder.
-4. Update your MYSQL database username and password.(default for Backtrack are used root:toor)
-5. From your browser access the sql-labs folder to load index.html
-6. Click on the link setup/resetDB to create database, create tables and populate Data.
-7. Labs ready to be used, click on lesson number to open the lesson page.
-8. Enjoy the labs
+1. docker compose up
+2. Go to [http://localhost:8000](http://localhost:8000)
 
 ==========================================================================================
 
 Corrosponding walkthrough video tutorials and explainations can be found at:
 
-1. http://dummy2dummies.blogspot.com 
+1. http://dummy2dummies.blogspot.com
 2. http://www.securitytube.net/user/Audi
 3. https://www.facebook.com/sqlilabs
 
