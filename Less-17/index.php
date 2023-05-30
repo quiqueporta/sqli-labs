@@ -84,6 +84,10 @@ fclose($fp);
 @$sql="SELECT username, password FROM users WHERE username= $uname LIMIT 0,1";
 
 $result=mysqli_query($con, $sql);
+if (!$result) {
+	printf("Error: %s\n", mysqli_error($con));
+	exit();
+}
 $row = mysqli_fetch_array($result);
 //echo $row;
 	if($row)

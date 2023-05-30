@@ -145,6 +145,10 @@ else
 			echo "<br></font>";
 			$sql="SELECT * FROM users WHERE username=('$cookee') LIMIT 0,1";
 			$result=mysqli_query($con, $sql);
+if (!$result) {
+	printf("Error: %s\n", mysqli_error($con));
+	exit();
+}
 			if (!$result)
   				{
   				die('Issue with your mysql: ' . mysqli_connect_errno());
