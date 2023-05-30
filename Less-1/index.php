@@ -41,7 +41,7 @@ $row = mysqli_fetch_array($result);
 	else
 	{
 	echo '<font color= "#FFFF00">';
-	print_r(mysql_error());
+	print_r(mysqli_error($con));
 	echo "</font>";
 	}
 }
