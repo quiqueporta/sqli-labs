@@ -29,8 +29,6 @@ fclose($fp);
 $sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";
 $result=mysqli_query($con, $sql);
 $row = mysqli_fetch_array($result);
-echo('asdfsadf');
-echo($row);
 
 	if($row)
 	{
