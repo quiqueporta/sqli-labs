@@ -28,10 +28,10 @@ fwrite($fp,'ID:'.$id."\n");
 fclose($fp);
 
 
-// connectivity 
+// connectivity
 $sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
+$result=mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
 
 	if($row)
 	{
@@ -41,15 +41,15 @@ $row = mysql_fetch_array($result);
   	echo 'Your Password:' .$row['password'];
   	echo "</font>";
   	}
-	else 
+	else
 	{
 	echo '<font color= "#FFFF00">';
-	print_r(mysql_error());
-	echo "</font>";  
+	print_r(mysqli_connect_errno());
+	echo "</font>";
 	}
 }
 	else
-		{ 	
+		{
 		echo "Please input the ID as parameter with numeric value";
 		}
 

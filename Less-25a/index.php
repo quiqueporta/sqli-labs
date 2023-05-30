@@ -31,33 +31,33 @@ fclose($fp);
 	//echo "<br>";
 	$hint=$id;
 
-// connectivity 
+// connectivity
 $sql="SELECT * FROM users WHERE id=$id LIMIT 0,1";
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
+$result=mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
 
 	if($row)
 	{
-  		echo "<font size='5' color= '#99FF00'>";	
+  		echo "<font size='5' color= '#99FF00'>";
 	  	echo 'Your Login name:'. $row['username'];
-		//echo 'YOU ARE IN ........';	  	
+		//echo 'YOU ARE IN ........';
 		echo "<br>";
 	  	echo 'Your Password:' .$row['password'];
 	  	echo "</font>";
   	}
-	else 
+	else
 	{
 		echo '<font size="5" color="#FFFF00">';
 		//echo 'You are in...........';
-		//print_r(mysql_error());
+		//print_r(mysqli_connect_errno());
 		//echo "You have an error in your SQL syntax";
-		echo "</br></font>";	
-		echo '<font color= "#0000ff" font size= 3>';	
-	
+		echo "</br></font>";
+		echo '<font color= "#0000ff" font size= 3>';
+
 	}
 }
-	else 
-{ 
+	else
+{
 	echo "Please input the ID as parameter with numeric value";
 }
 
@@ -65,7 +65,7 @@ function blacklist($id)
 {
 	$id= preg_replace('/or/i',"", $id);			//strip out OR (non case sensitive)
 	$id= preg_replace('/AND/i',"", $id);		//Strip out AND (non case sensitive)
-	
+
 	return $id;
 }
 
@@ -85,7 +85,7 @@ function blacklist($id)
 <?php
 echo "Hint: Your Input is Filtered with following result: ".$hint;
 ?>
-</font> 
+</font>
 </center>
 </body>
 </html>

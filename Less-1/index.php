@@ -14,7 +14,7 @@
 //including the Mysql connect parameters.
 include("../sql-connections/sql-connect.php");
 error_reporting(0);
-// take the variables 
+// take the variables
 if(isset($_GET['id']))
 {
 $id=$_GET['id'];
@@ -23,12 +23,14 @@ $fp=fopen('result.txt','a');
 fwrite($fp,'ID:'.$id."\n");
 fclose($fp);
 
-// connectivity 
+// connectivity
 
 
 $sql="SELECT * FROM users WHERE id='$id' LIMIT 0,1";
-$result=mysql_query($sql);
-$row = mysql_fetch_array($result);
+$result=mysqli_query($con, $sql);
+$row = mysqli_fetch_array($result);
+echo('asdfsadf');
+echo($row);
 
 	if($row)
 	{
@@ -38,11 +40,11 @@ $row = mysql_fetch_array($result);
   	echo 'Your Password:' .$row['password'];
   	echo "</font>";
   	}
-	else 
+	else
 	{
 	echo '<font color= "#FFFF00">';
 	print_r(mysql_error());
-	echo "</font>";  
+	echo "</font>";
 	}
 }
 	else { echo "Please input the ID as parameter with numeric value";}
@@ -57,4 +59,4 @@ $row = mysql_fetch_array($result);
 
 
 
- 
+

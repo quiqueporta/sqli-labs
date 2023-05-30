@@ -11,7 +11,7 @@
 
 <?php
 include("../sql-connections/sql-connect.php");
-$id=$_GET['sort'];	
+$id=$_GET['sort'];
 if(isset($id))
 	{
 	//logging the connection parameters to a file for analysis.
@@ -20,13 +20,13 @@ if(isset($id))
 	fclose($fp);
 
 	$sql = "SELECT * FROM users ORDER BY $id";
-	$result = mysql_query($sql);
+	$result = mysqli_query($con, $sql);
 	if ($result)
 		{
 		?>
 		<center>
 		<font color= "#00FF00" size="4">
-		
+
 		<table   border=1'>
 		<tr>
 			<th>&nbsp;ID&nbsp;</th>
@@ -38,18 +38,18 @@ if(isset($id))
 		<?php
 		while ($row = mysql_fetch_assoc($result))
 			{
-			echo '<font color= "#00FF11" size="3">';		
+			echo '<font color= "#00FF11" size="3">';
 			echo "<tr>";
     			echo "<td>".$row['id']."</td>";
     			echo "<td>".$row['username']."</td>";
     			echo "<td>".$row['password']."</td>";
 			echo "</tr>";
 			echo "</font>";
-			}	
+			}
 		echo "</table>";
-		
+
 		}
-	}	
+	}
 	else
 	{
 		echo "Please input parameter as SORT with numeric value<br><br><br><br>";
@@ -58,10 +58,10 @@ if(isset($id))
 		echo "Lesson Concept and code Idea by <b>D4rk</b>";
 	}
 ?>
-		
-		
+
+
 </font> </div></br></br></br>
 
-</center> 
+</center>
 </body>
 </html>

@@ -4,14 +4,14 @@ include("../sql-connections/db-creds.inc");
 include("../sql-connections/sql-connect-1.php");
 
 #################################
-#  Especially for challenges    # 
+#  Especially for challenges    #
 #################################
 
 //Creating dynamic string for creating dynamic names
 function num_gen($string_length, $characters)
 {
 	$string = '';
- 	for ($i = 0; $i < $string_length; $i++) 
+ 	for ($i = 0; $i < $string_length; $i++)
 	{
       		$string .= $characters[rand(0, strlen($characters) - 1)];
  	}
@@ -31,10 +31,10 @@ function table_name()
 	include '../sql-connections/db-creds.inc';
 	include '../sql-connections/sql-connect-1.php';
 	$sql="SELECT table_name FROM information_schema.tables WHERE table_schema='$dbname1'";
-	$result=mysql_query($sql) or die("error in function table_name()".mysql_error());
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($con, $sql) or die("error in function table_name()".mysqli_connect_errno());
+	$row = mysqli_fetch_array($result);
 	if(!$row)
-	die("error in function table_name() output". mysql_error());
+	die("error in function table_name() output". mysqli_connect_errno());
 	else
 	return $row[0];
 }
@@ -46,10 +46,10 @@ function column_name($idee)
 	include '../sql-connections/sql-connect-1.php';
 	$table = table_name();
 	$sql="SELECT column_name FROM information_schema.columns WHERE table_name='$table' LIMIT $idee,1";
-	$result=mysql_query($sql) or die("error in function column_name()".mysql_error());
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($con, $sql) or die("error in function column_name()".mysqli_connect_errno());
+	$row = mysqli_fetch_array($result);
 	if(!$row)
-	die("error in function column_name() result". mysql_error());
+	die("error in function column_name() result". mysqli_connect_errno());
 	else
 	return $row[0];
 }
@@ -61,10 +61,10 @@ function data($tab,$col)
 	include '../sql-connections/db-creds.inc';
 	include '../sql-connections/sql-connect-1.php';
 	$sql="SELECT $col FROM $tab WHERE id=1";
-	$result=mysql_query($sql) or die("error in function column_name()".mysql_error());
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($con, $sql) or die("error in function column_name()".mysqli_connect_errno());
+	$row = mysqli_fetch_array($result);
 	if(!$row)
-	die("error in function column_name() result". mysql_error());
+	die("error in function column_name() result". mysqli_connect_errno());
 	else
 	return $row[0];
 }
@@ -77,7 +77,7 @@ function next_tryy()
 	include '../sql-connections/db-creds.inc';
 	include '../sql-connections/sql-connect-1.php';
 	$sql = "UPDATE $table SET tryy=tryy+1 WHERE id=1";
-	mysql_query($sql) or die("error in function next_tryy()". mysql_error());
+	mysqli_query($con, $sql) or die("error in function next_tryy()". mysqli_connect_errno());
 }
 
 function view_attempts()
@@ -85,12 +85,12 @@ function view_attempts()
 	include("../sql-connections/sql-connect-1.php");
 	$table = table_name();
 	$sql="SELECT tryy FROM $table WHERE id=1";
-	$result=mysql_query($sql) ;
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($con, $sql) ;
+	$row = mysqli_fetch_array($result);
 	if(!$row)
-	die("error in function view_attempts()". mysql_error());
+	die("error in function view_attempts()". mysqli_connect_errno());
 	else
-	return $row[0];	
+	return $row[0];
 }
 
 ?>

@@ -16,7 +16,7 @@ include("../sql-connections/sql-connect.php");
 //disable error reporting
 error_reporting(0);
 
-// take the variables 
+// take the variables
 if(isset($_GET['id']))
 {
 	$qs = $_SERVER['QUERY_STRING'];
@@ -26,32 +26,32 @@ if(isset($_GET['id']))
 	//echo $id1;
 	whitelist($id1);
 	$id = '"' .$id. '"';
-	
+
 	//logging the connection parameters to a file for analysis.
 	$fp=fopen('result.txt','a');
 	fwrite($fp,'ID:'.$id."\n");
 	fclose($fp);
-	
-	
-	
 
-// connectivity 
+
+
+
+// connectivity
 	$sql="SELECT * FROM users WHERE id=($id) LIMIT 0,1";
-	$result=mysql_query($sql);
-	$row = mysql_fetch_array($result);
+	$result=mysqli_query($con, $sql);
+	$row = mysqli_fetch_array($result);
 	if($row)
 	{
-	  	echo "<font size='5' color= '#99FF00'>";	
+	  	echo "<font size='5' color= '#99FF00'>";
 	  	echo 'Your Login name:'. $row['username'];
 	  	echo "<br>";
 	  	echo 'Your Password:' .$row['password'];
 	  	echo "</font>";
   	}
-	else 
+	else
 	{
 		echo '<font color= "#FFFF00">';
-		print_r(mysql_error());
-		echo "</font>";  
+		print_r(mysqli_connect_errno());
+		echo "</font>";
 	}
 }
 	else { echo "Please input the ID as parameter with numeric value";}
@@ -75,7 +75,7 @@ function whitelist($input)
 		//return $match;
 	}
 	else
-	{	
+	{
 		header('Location: hacked.php');
 		//echo "you are bad";
 	}
@@ -95,7 +95,7 @@ function java_implimentation($query_string)
 		$val=substr($value,0,2);
 		if($val=="id")
 		{
-			$id_value=substr($value,3,30); 
+			$id_value=substr($value,3,30);
 			return $id_value;
 			echo "<br>";
 			break;
@@ -125,7 +125,7 @@ echo "Hint: The Query String you input is: ".$hint;
 <a href="https://community.qualys.com/servlet/JiveServlet/download/38-10665/Protocol-Level Evasion of Web Application Firewalls v1.1 (18 July 2012).pdf">https://community.qualys.com/servlet/JiveServlet/download/38-10665/Protocol-Level Evasion of Web Application Firewalls v1.1 (18 July 2012).pdf</a>
 
 
-</font> 
+</font>
 </center>
 </body>
 </html>
@@ -134,4 +134,4 @@ echo "Hint: The Query String you input is: ".$hint;
 
 
 
- 
+
