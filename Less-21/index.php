@@ -80,7 +80,11 @@ function check_input($value)
 
 
 		$sql="SELECT  users.username, users.password FROM users WHERE users.username=$uname and users.password=$passwd ORDER BY users.id DESC LIMIT 0,1";
-		$result1 = mysqli_query($con, $sql);
+		$result1=mysqli_query($con, $sql);
+if (!$result1) {
+	printf("Error: %s\n", mysqli_error($con));
+	exit();
+}
 		$row1 = mysqli_fetch_array($result1);
 			if($row1)
 				{
